@@ -1,0 +1,122 @@
+{
+  "api_key": "bf_test_key",
+  "signing_secret": "test-signing-secret",
+  "base_url": "https://bridge.bifrostcrypto.com",
+  "max_retries": 2,
+  "default_retry_delay_ms": 1000,
+  "max_payouts": 50,
+  "paths": {
+    "payout": "/v1/payout",
+    "list_payout": "/v1/list-payout",
+    "check_payout": "/v1/check-payout",
+    "payin": "/v1/payin",
+    "list_payin": "/v1/list-payin",
+    "check_payin": "/v1/check-payin",
+    "balances": "/v1/balances",
+    "statements": "/v1/statements",
+    "statements_summary": "/v1/statements/summary",
+    "summary": "/v1/summary",
+    "tokens": "/v1/summary/tokens",
+    "fiats": "/v1/summary/fiats",
+    "price": "/v1/get-price",
+    "currencies": "/v1/get-currencies",
+    "fixed_supported": "/v1/fixed-wallets/supported",
+    "fixed_config": "/v1/fixed-wallets/config",
+    "fixed_wallets": "/v1/fixed-wallets"
+  },
+  "rate_limit": {
+    "status": 429,
+    "body": {
+      "error": "rate_limit_exceeded",
+      "message": "Request limit exceeded",
+      "details": {
+        "limit": 100,
+        "window_seconds": 60,
+        "retry_after_seconds": 24,
+        "retry_after_formatted": "24 seconds"
+      }
+    }
+  },
+  "idempotency_in_progress": {
+    "status": 409,
+    "body": {
+      "error": "idempotency_key_in_progress",
+      "message": "A request with this Idempotency-Key is still being processed"
+    }
+  },
+  "service_unavailable": {
+    "status": 503,
+    "body": {
+      "error": "service_unavailable",
+      "message": "Service unavailable"
+    }
+  },
+  "partial_batch": {
+    "status": 207,
+    "body": {
+      "message": "payment_processing_completed",
+      "summary": { "total_requested": 2, "successful": 1, "failed": 1 },
+      "results": [
+        {
+          "index": 0,
+          "reference_id": "order_12345",
+          "internal_reference": "BIFROST_REF_123456",
+          "status": "created"
+        },
+        {
+          "index": 1,
+          "reference_id": "order_12346",
+          "error": "invalid_parameters",
+          "duplicate": false
+        }
+      ]
+    }
+  },
+  "processing_exception": {
+    "status": 500,
+    "body": {
+      "error": "processing_exception",
+      "message": "An unexpected error occurred during payment processing",
+      "summary": {
+        "total_requested": 50,
+        "successful": 31,
+        "failed": 1,
+        "not_processed": 18
+      },
+      "results": []
+    }
+  },
+  "fixed_wallet_created": {
+    "status": 201,
+    "body": {
+      "message": "FixedWallets.assign_success",
+      "wallet": {
+        "customer_info": "customer123",
+        "wallet": "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb",
+        "type": "evm",
+        "status": "STATUS_ASSIGNED"
+      }
+    }
+  },
+  "fixed_wallet_existing": {
+    "status": 200,
+    "body": {
+      "message": "FixedWallets.already_assigned",
+      "wallet": {
+        "customer_info": "customer123",
+        "wallet": "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb",
+        "type": "evm",
+        "status": "STATUS_ASSIGNED"
+      }
+    }
+  },
+  "balances_ok": {
+    "status": 200,
+    "body": {
+      "message": "balances_retrieved_success",
+      "balances": { "balance_tether": "1000.00000000" },
+      "available": { "balance_tether": "900.00000000" },
+      "locked": { "balance_tether": "100.00000000" }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "key": "whsec_test",
+  "tolerance_seconds": 300,
+  "timestamp": "1750000000",
+  "delivery": "deliv_001",
+  "raw_body": "{\"data\":{\"status\":\"success\",\"reference_id\":\"order_12345\",\"internal_reference\":\"BIFROST_REF_123456\"},\"event\":\"payment_processed\",\"timestamp\":\"2026-03-01 13:00:16\"}",
+  "body_sha256": "5f4ded3dda7a22573d4174ce1bbacc04b2d2da8f4bb97d013d6c12e3a3064734",
+  "signature": "v1=f56e81ffaab66e9e3ccd4580be5c1adbc019a993d76bff80a3721108478d7e7c",
+  "now": 1750000000,
+  "within_window_now": 1750000300,
+  "stale_now": 1750000301,
+  "bad_signature": "v1=0000000000000000000000000000000000000000000000000000000000000000",
+  "expected_event": "payment_processed"
+}

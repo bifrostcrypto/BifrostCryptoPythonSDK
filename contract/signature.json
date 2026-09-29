@@ -1,0 +1,39 @@
+{
+  "secret": "test-signing-secret",
+  "empty_body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "vectors": [
+    {
+      "id": "post_with_body",
+      "method": "POST",
+      "path": "/v1/payout",
+      "query": "",
+      "timestamp": "1750000000",
+      "nonce": "nonce-0123456789abcdef",
+      "body": "{\"wallet\":\"0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb\",\"crypto_currency\":\"USDT\",\"crypto_amount\":\"100.50\",\"process_by\":\"crypto_amount\",\"reference_id\":\"order_12345\",\"network\":\"Ethereum\",\"feetakenfromamount\":0,\"webhook_url\":\"https://your-site.com/webhook\"}",
+      "body_sha256": "f74e65abc0b4c5d739d084c89ee785dbb15f6941cc7a946dbc03e84b64cbffc6",
+      "signature": "6ec55d9ff7c59a3438f9f1933e6ac8b437a06124eacc99a851116b0aaa19e215"
+    },
+    {
+      "id": "get_with_query",
+      "method": "GET",
+      "path": "/v1/get-price",
+      "query": "currency1=USDT&currency2=USD",
+      "timestamp": "1750000000",
+      "nonce": "nonce-abcdef0123456789",
+      "body": "",
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "signature": "7cb9e1d16078aaf6e064391fafa9faf1f68995b6145b1c79b8139fa0319b1bc5"
+    },
+    {
+      "id": "get_empty",
+      "method": "GET",
+      "path": "/v1/balances",
+      "query": "",
+      "timestamp": "1750000001",
+      "nonce": "nonce-empty-body-0001",
+      "body": "",
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "signature": "3b7948f21d5e970a95b4b78d89cbd4ea1f5c07d66d725d8d680526224280ebb2"
+    }
+  ]
+}
